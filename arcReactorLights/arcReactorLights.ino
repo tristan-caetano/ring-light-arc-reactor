@@ -79,10 +79,12 @@ void arcReactor(){
     clearLEDs();
     
     // LED numbers for outer 2 dark blue lights
-    int darkBlue[] = {1,2,4,6,7,9,10,12,14,15,17,18,20,22,23,25,26,28,30,31,33,35,37,39,41,43,45,47,49,51,53,55};
+    // int darkBlue[] = {1,2,4,6,7,9,10,12,14,15,17,18,20,22,23,25,26,28,30,31,33,35,37,39,41,43,45,47,49,51,53,55};
+    int darkBlue[] = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23,25,27,29,31,33,35,37,39};
 
     // Setting initial number for the final 3 inner rings and middle LED
-    int i = 56;
+    //int i = 56;
+    int i = 40;
 
     // Value for initing through darkBlue array to grab all relevent lights
     int k = 0;
@@ -95,12 +97,12 @@ void arcReactor(){
       FastLED.delay(1000/FRAMES_PER_SECOND);
 
       // Third to last ring will be turquoise
-      if(i < 72){
+      if(i < 52){
         leds[i] = CRGB(0,255,255);
 
       // Second to last ring will be light blue  
-      }else if(i > 71 && i < 84){
-        leds[i] = CRGB(50,150,255);
+      // }else if(i > 71 && i < 84){
+      //   leds[i] = CRGB(50,150,255);
 
       // Last ring and middle LED will be white
       }else{
