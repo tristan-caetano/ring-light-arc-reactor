@@ -6,6 +6,7 @@
 
 // Setting Pins
 #define LED_PIN 3
+
 #define POT_PIN A0
 #define NUM_LEDS 93
 #define FRAMES_PER_SECOND 120
@@ -43,11 +44,11 @@ potVal = analogRead(POT_PIN);
 EVERY_N_MILLISECONDS( 20 ) { gHue++; }
 
 // Init potentiometer position will show the standard arc reactor design
-if(potVal < 200){
+if(potVal < 300){
   arcReactor();
 
 // Second potentiometer position will show rainbow glitter design
-}else if(potVal < 400 && potVal > 200){
+}else if(potVal < 400 && potVal > 300){
   rainbowWithGlitter();
 
 // Third potentiometer position will show the sinelon design
@@ -69,22 +70,23 @@ if(potVal < 200){
 
 }
 
+
+
 // Creating the arc reactor design
 void arcReactor(){
 
   // Checking to make sure the design isn't already set on the lights to prevent repeats
   if(!done){
-
     // Turning off all LEDs
     clearLEDs();
     
     // LED numbers for outer 2 dark blue lights
-    // int darkBlue[] = {1,2,4,6,7,9,10,12,14,15,17,18,20,22,23,25,26,28,30,31,33,35,37,39,41,43,45,47,49,51,53,55};
-    int darkBlue[] = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23,25,27,29,31,33,35,37,39};
+    int darkBlue[] = {1,2,4,6,7,9,10,12,14,15,17,18,20,22,23,25,26,28,30,31,33,35,37,39,41,43,45,47,49,51,53,55};
+    //int darkBlue[] = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23,25,27,29,31,33,35,37,39};
 
     // Setting initial number for the final 3 inner rings and middle LED
-    //int i = 56;
-    int i = 40;
+    int i = 56;
+    //int i = 40;
 
     // Value for initing through darkBlue array to grab all relevent lights
     int k = 0;
@@ -97,12 +99,12 @@ void arcReactor(){
       FastLED.delay(1000/FRAMES_PER_SECOND);
 
       // Third to last ring will be turquoise
-      if(i < 52){
+      if(i < 72){
         leds[i] = CRGB(0,255,255);
 
       // Second to last ring will be light blue  
-      // }else if(i > 71 && i < 84){
-      //   leds[i] = CRGB(50,150,255);
+      }else if(i > 71 && i < 84){
+        leds[i] = CRGB(50,150,255);
 
       // Last ring and middle LED will be white
       }else{
